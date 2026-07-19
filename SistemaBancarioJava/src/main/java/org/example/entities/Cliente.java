@@ -3,11 +3,11 @@ package org.example;
 public class Cliente {
     private String nome;
     private String cpf;
-    private char tipo;
+    private String tipo;
     private String rg;
     private int idade;
 
-public Cliente(String nome, String cpf, char tipo, String rg, int idade){
+public Cliente(String nome, String cpf, String tipo, String rg, int idade){
     this.nome = nome;
     this.cpf = cpf;
     this.tipo = tipo;
@@ -30,11 +30,11 @@ public void setRg(String rg) {
         this.rg = rg;
 }
 
-public void setTipo(char tipo) {
+public void setTipo(String tipo) {
         this.tipo = tipo;
 }
 
-    public char getTipo() {
+    public String getTipo() {
         return tipo;
     }
 

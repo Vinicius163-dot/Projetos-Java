@@ -6,14 +6,16 @@ public class ContaBancaria {
     private String agencia;
     private String numeroConta;
     private double fatura;
+    private static long contadorContas = 0;
 
 
-    public ContaBancaria (Cliente titular, double saldo, String agencia, String numeroConta, double fatura){
-      this.titular = titular;
-      this.saldo = saldo;
-      this.agencia = agencia;
-      this.numeroConta = numeroConta;
-      this.fatura = fatura;
+    public ContaBancaria (Cliente titular, double saldo, double fatura){
+        contadorContas++;
+        this.titular = titular;
+        this.saldo = saldo;
+        this.fatura = fatura;
+        this.agencia = "0001";
+        this.numeroConta = contadorContas + "";
     }
 
     public void depositar(double valor){
@@ -27,7 +29,7 @@ public class ContaBancaria {
 
     public void sacar (double valor){
         if (valor > 0 && valor <= saldo){
-            saldo = valor - saldo;
+            saldo = saldo - valor;
         } else {
             System.out.println("Saque não realizado, saldo insuficiente.");
         }
@@ -41,6 +43,7 @@ public class ContaBancaria {
         System.out.println("Fatura não debitada, saldo insuficiente para pagamento da fatura atual");
         }
     }
+    
 
     public void setAgencia(String agencia) {
         this.agencia = agencia;
