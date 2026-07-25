@@ -1,4 +1,4 @@
-package org.example;
+package org.example.application;
 import java.util.Scanner;
 import org.example.entities.Cliente;
 import org.example.entities.ContaBancaria;
