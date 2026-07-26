@@ -2,6 +2,9 @@ package org.example.application;
 import java.util.Scanner;
 import org.example.entities.Cliente;
 import org.example.entities.ContaBancaria;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class Main{
     public static void main(String[] args){
@@ -21,6 +24,17 @@ public class Main{
 
         Cliente novoCliente = new Cliente (nomeDigitado, cpfDigitado, tipoDigitado, rgDigitado, idadeDigitado);
         ContaBancaria novaConta = new ContaBancaria (novoCliente , 0.0 , 0.0);
+
+        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("SistemaBancarioJava");
+        EntityManager gerente = fabrica.createEntityManager();
+
+        gerente.getTransaction().begin();
+        gerente.persist(novoCliente);
+        gerente.persist(novaConta);
+        gerente.getTransaction().commit();
+        gerente.close();
+        fabrica.close();
+        leitura.close();
 
 
 

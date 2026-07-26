@@ -1,9 +1,15 @@
 package org.example.entities;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
+@Entity
 public class ContaBancaria {
+    @ManyToOne
     private Cliente titular;
     private double saldo;
     private String agencia;
+    @Id
     private String numeroConta;
     private double fatura;
     private static long contadorContas = 0;
@@ -17,6 +23,8 @@ public class ContaBancaria {
         this.agencia = "0001";
         this.numeroConta = contadorContas + "";
     }
+
+    public ContaBancaria(){}
 
     public void depositar(double valor){
         if (valor > 0){
